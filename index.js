@@ -1,13 +1,24 @@
-var title = document.firstElementChild.lastElementChild.firstElementChild;
+//Generate random number
+let randomNumber = () => Math.floor(Math.random() * 6 + 1);
 
-// title.innerHTML = "Yeji ❤️ Rafli";
-// var list = document.getElementById("list");
+//Generate random dice png file for both players
+let randomDice1 = "dice" + randomNumber() + ".png";
+let randomDice2 = "dice" + randomNumber() + ".png";
 
-// for (var i = 0; i < 5; i++) {
-//     var newItem = document.createElement("li");
-//     newItem.textContent = "Item " + (i + 1); // Set the text content for the new <li> element
-//     list.appendChild(newItem); // Append the new <li> element to the list
-// }
-// var childList = document.querySelectorAll("li").classList;
+//Changing source atributes
+const imageSource1 = `images/${randomDice1}`;
+const imageSource2 = `images/${randomDice2}`;
 
-//document.querySelector("div h1").setAttribute("class", "bg-dark");
+let firstDice = document.querySelectorAll("img")[0];
+let secondDice = document.querySelectorAll("img")[1];
+
+firstDice.setAttribute("src", imageSource1);
+secondDice.setAttribute("src", imageSource2);
+
+if(randomDice1 > randomDice2) {
+    document.querySelector("h1").innerHTML = "Player 1 Win";
+}else if(randomDice1 < randomDice2) {
+    document.querySelector("h1").innerHTML = "Player 2 Win";
+}else {
+    document.querySelector("h1").innerHTML = "Draw";
+}
